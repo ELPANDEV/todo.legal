@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1>Home</h1>
+  <div id="layout">
+    <h1>Layout Auth</h1>
+    <slot />
   </div>
 </template>
 
