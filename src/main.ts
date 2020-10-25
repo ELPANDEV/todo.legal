@@ -1,28 +1,22 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store, { AuthStateTypes } from "./store";
+import store from "./store";
+import { store as AuthStore } from "./store/auth/store";
 
 //#region axios
 
-import axios, { AxiosStatic } from 'axios';
+import axios from 'axios';
 
 axios.defaults.headers.common = {
   'X-Requested-With': 'XMLHttpRequest'
 };
 
 //#endregion
-//#region global vars and types
+//#region global vars
 
 Vue.prototype.$axios = axios;
-Vue.prototype.$auth  = store.state.auth;
-
-declare module 'vue/types/vue' {
-  interface Vue {
-    $axios: AxiosStatic,
-    $auth: AuthStateTypes
-  }
-}
+Vue.prototype.$auth  = AuthStore;
 
 //#endregion
 //#region register components

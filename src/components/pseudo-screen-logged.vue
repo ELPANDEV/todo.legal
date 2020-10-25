@@ -16,12 +16,12 @@
       <div class="information">
         <v-logged-data
           title="Nombres y Apellidos"
-          description="Juan Perez López"
+          :description="$auth.getters.userName"
         />      
 
         <v-logged-data
           title="Cédula de Identidad"
-          description="17587000024-2"
+          :description="$auth.state.user.username"
         />      
       </div>
 
@@ -41,7 +41,7 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  
+
 })
 </script>
 

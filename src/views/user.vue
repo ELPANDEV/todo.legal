@@ -43,7 +43,7 @@ export default Vue.extend({
   },
   methods: {
     onSubmit() {
-      this.$auth.loggedIn = true
+      this.$auth.state.loggedIn = true
     }
   }
 })

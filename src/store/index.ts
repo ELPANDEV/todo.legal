@@ -1,23 +1,11 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-Vue.use(Vuex);
-
-export interface StateTypes {
-  auth: AuthStateTypes
-}
-
-export interface AuthStateTypes {
-  loggedIn: boolean
-}
+Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    auth: {
-      loggedIn: false
-    }
-  } as StateTypes,
+  state: {},
   mutations: {},
   actions: {},
   modules: {}
-});
+})
