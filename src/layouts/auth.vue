@@ -2,9 +2,15 @@
   <div id="layout">
     <v-layout-auth-header />
 
-    <section id="body">
-      <slot />
-    </section>
+    <v-box-center-container
+      tag="section"
+      :center="false"
+      id="body"
+    >
+      <div slot="container">
+        <slot />
+      </div>
+    </v-box-center-container>
 
     <v-layout-auth-footer />
   </div>
@@ -24,9 +30,10 @@ export default Vue.extend({
   #body {
     background-color: #f8f8f8;
     border-radius: 0 56px;
-    max-width: 360px;
+    max-width: 340px;
     width: 100%;
     margin: 0 auto;
+    padding: 64px 32px 0 32px;
   }
 }
 </style>

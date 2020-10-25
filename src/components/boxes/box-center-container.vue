@@ -1,6 +1,12 @@
 <template>
   <component
     :is="tag"
+    :style="
+      center ? {
+        display: 'grid',
+        placeItems: 'center'
+      } : {}
+    "
     class="box-center-container"
   >
     <slot name="container" />
@@ -11,7 +17,12 @@
 import Vue from 'vue'
 export default Vue.extend({
   props: {
-    tag: String
+    tag: String,
+    center: {
+      type: Boolean,
+      required: false,
+      default: true
+    }
   }
 })
 </script>
@@ -19,6 +30,5 @@ export default Vue.extend({
 <style lang="scss">
 .box-center-container {
   display: grid;
-  place-items: center;
 }
 </style>

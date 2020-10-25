@@ -11,7 +11,8 @@
   font-size: 15px;
   box-sizing: border-box;
   color: rgb(75, 75, 75);
-  font-family: Verdana, Geneva, Tahoma, sans-serif
+  font-family: 'Lato',sans-serif;
+  line-height: 1.4;
 }
 
 a {
@@ -24,5 +25,11 @@ ul, ol {
 
 body {
   background-color: white;
+}
+
+svg {
+  width: 24px;
+  height: 24px;
+  fill: black;
 }
 </style>
