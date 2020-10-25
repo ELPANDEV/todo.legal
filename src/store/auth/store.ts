@@ -1,4 +1,5 @@
-import {
+import Vue from 'vue'
+import Vuex, {
   Store as VuexStore,
   CommitOptions,
   DispatchOptions,
@@ -7,6 +8,8 @@ import { State, state } from './state'
 import { Actions, actions } from './actions'
 import { Getters, getters } from './getters'
 import { Mutations, mutations } from './mutations'
+
+Vue.use(Vuex)
 
 export const store = new VuexStore({
   state,
