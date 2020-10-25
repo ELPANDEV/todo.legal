@@ -24,7 +24,7 @@ export default Vue.extend({
   grid-template-columns: repeat(2, auto);
   align-items: center;
   column-gap: 9px;
-  margin-top: 18px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 </style>
