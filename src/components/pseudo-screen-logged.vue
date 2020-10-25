@@ -29,6 +29,7 @@
 
     <v-button-submit
       name="FINALIZAR"
+      @click.native="$router.push({ name: 'auth-register' })"
     >
       <v-svg-arrow-circle-down
         slot="svg"

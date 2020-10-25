@@ -12,10 +12,6 @@ export type Mutations<S = State> = {
 
 export const mutations: MutationTree<State> & Mutations = {
   [AuthMutationTypes.SET_USER](state, payload: LoginResponse) {
-    state.user.accessToken = payload.access_token
-    state.user.name        = payload.name
-    state.user.lastname    = payload.lastname
-    state.user.username    = payload.username
-    state.user.tokenType   = payload.token_type
+    state.user = payload
   },
 }

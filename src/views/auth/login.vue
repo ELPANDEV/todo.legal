@@ -18,7 +18,7 @@
 
       <v-input label="Contraseña" type="password" v-model="form.password" />
 
-      <router-link class="create-account-link" to="/user">
+      <router-link class="create-account-link" :to="{ name: 'auth-register' }">
         No tengo cuenta, crear cuenta GRATIS
       </router-link>
 
@@ -47,7 +47,7 @@ export default Vue.extend({
     }
   },
   methods: {
-    async onSubmit() {
+    onSubmit() {
       this.loader = true
 
       this.$auth

@@ -11,11 +11,6 @@ const routes: Array<RouteConfig> = [
     component: Home
   },
   {
-    path: "/user",
-    name: "user",
-    component: () => import("../views/user.vue")
-  },
-  {
     path: "/auth",
     name: "auth",
     component: () => import("../views/auth/auth.vue"),
@@ -24,7 +19,12 @@ const routes: Array<RouteConfig> = [
         path: "login",
         name: "auth-login",
         component: () => import("../views/auth/login.vue"),
-      }
+      },
+      {
+        path: "register",
+        name: "auth-register",
+        component: () => import("../views/auth/register.vue")
+      },
     ]
   }
 ];

@@ -7,7 +7,7 @@ export type Getters = {
 }
 
 export const getters: GetterTree<State, State> = {
-  loggedIn: state => state.user.accessToken != null,
+  loggedIn: state => state.user.access_token != null,
   userName: state => {
     return `${state.user.name} ${state.user.lastname}`
   }
