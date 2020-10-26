@@ -6,24 +6,34 @@ import Home from '../views/home.vue'
 import store from '../store'
 import { store as AuthStore } from '../store/auth/store'
 import log from '@/midleware/log'
+import guess from '@/midleware/guess'
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'home',
+    component: Home,
+    meta: {
+      middleware: [auth]
+    }
   },
   {
     path: '/auth',
     name: 'auth',
     component: () => import('../views/auth/auth.vue'),
+    meta: {
+      middleware: [auth]
+    },
     children: [
       {
         path: 'login',
         name: 'auth-login',
-        component: () => import('../views/auth/login.vue')
+        component: () => import('../views/auth/login.vue'),
+        meta: {
+          middleware: [guess]
+        }
       },
       {
         path: 'register',
