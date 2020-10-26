@@ -51,7 +51,12 @@ export default Vue.extend({
       this.$auth
         .dispatch(AuthActionTypes.REGISTER, this.form)
         .then(response => {
-          console.log(response.data)
+          this.$store.state.alerts.push({
+            id: Math.floor((Math.random() * 999999999999) + 1),
+            type: 'ok',
+            title: '¡Registro Exitoso!',
+            description: 'Tu registro se ha realizado con éxito'
+          })
         })
         .catch(response => {
           console.error(response.errors)

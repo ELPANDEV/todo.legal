@@ -55,8 +55,15 @@ export default Vue.extend({
         .then(response => {
           this.$auth.commit(AuthMutationTypes.SET_USER, response.data)
         })
-        .catch(response => {
-          console.error(response.errors)
+        .catch(error => {
+          const data = error.response.data
+
+          this.$store.state.alerts.push({
+            id: Math.floor((Math.random() * 999999999999) + 1),
+            type: 'warm',
+            title: data.status,
+            description: data.msg
+          })
         })
         .finally(() => {
           this.loader = false
