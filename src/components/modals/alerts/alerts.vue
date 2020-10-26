@@ -47,10 +47,6 @@ export default Vue.extend({
   transform: translateY(30px);
 }
 
-.list-complete-leave-active {
-  position: absolute;
-}
-
 @media screen and (min-width: 640px) {
   .alerts {
     > span {

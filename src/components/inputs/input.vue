@@ -40,6 +40,9 @@ export default Vue.extend({
   data: () => ({
     active: false
   }),
+  created() {
+    this.blur()
+  },
   methods: {
     focus() {
       this.active = true

@@ -53,6 +53,7 @@ button {
     }
   }
   svg {
+    fill: #bbb;
     transition: fill .16s;
     &.active, &:hover {
       fill: map-get($map: $color, $key: app);
