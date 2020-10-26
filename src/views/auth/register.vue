@@ -50,7 +50,7 @@ export default Vue.extend({
 
       if (!passwordConfirmation) {
         this.$store.state.alerts.push({
-          id: Math.floor((Math.random() * 999999999999) + 1),
+          id: Math.random(),
           type: 'warm',
           title: 'Contraseña Invalida',
           description: 'La contraseñas no coinciden, verifica y vuelve a intentarlo'
@@ -71,7 +71,7 @@ export default Vue.extend({
           .dispatch(AuthActionTypes.REGISTER, this.form)
           .then(response => {
             this.$store.state.alerts.push({
-              id: Math.floor((Math.random() * 999999999999) + 1),
+              id: Math.random(),
               type: 'ok',
               title: '¡Registro Exitoso!',
               description: 'Tu registro se ha realizado con éxito'
@@ -81,7 +81,7 @@ export default Vue.extend({
             const data = error.response.data
 
             this.$store.state.alerts.push({
-              id: Math.floor((Math.random() * 999999999999) + 1),
+              id: Math.random(),
               type: 'warm',
               title: data.status,
               description: data.msg

@@ -65,7 +65,7 @@ export default Vue.extend({
             this.$auth.commit(AuthMutationTypes.SET_USER, response.data)
 
             this.$store.state.alerts.push({
-              id: Math.floor((Math.random() * 999999999999) + 1),
+              id: Math.random(),
               type: 'welcome',
               title: `Hola ${this.$auth.getters.userName}`,
               description: 'Nos alegra mucha tenerte de vuelta en todo.legal'
@@ -77,7 +77,7 @@ export default Vue.extend({
             const data = error.response.data
 
             this.$store.state.alerts.push({
-              id: Math.floor((Math.random() * 999999999999) + 1),
+              id: Math.random(),
               type: 'warm',
               title: data.status,
               description: data.msg
@@ -91,7 +91,7 @@ export default Vue.extend({
     toCreateAccount() {
       if (!this.$auth.getters.loggedIn) {
         this.$store.state.alerts.push({
-          id: Math.floor((Math.random() * 999999999999) + 1),
+          id: Math.random(),
           type: 'info',
           title: 'No Authorizado',
           description: 'Según el ejercicio: Se necesita el token de login para crear nuevos usuarios'
@@ -102,7 +102,7 @@ export default Vue.extend({
   mounted() {
     if (this.$auth.getters.loggedIn) {
       this.$store.state.alerts.push({
-        id: Math.floor((Math.random() * 999999999999) + 1),
+        id: Math.random(),
         type: 'info',
         title: 'Ya has iniciado sesión',
         description: 'Tu cuenta ya ha sido verificada, ahora puedes hacer uso de todas nuestras herramientas'
