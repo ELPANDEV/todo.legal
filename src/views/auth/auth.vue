@@ -1,7 +1,9 @@
 <template>
-  <v-layout-auth>
-    <router-view></router-view>
-  </v-layout-auth>
+  <div>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
 </template>
 
 <script lang="ts">

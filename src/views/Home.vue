@@ -1,5 +1,5 @@
 <template>
-  <v-layout-auth>
+  <div id="home">
     <v-box-half-rounded>
       <v-form-title
         title="EL PAN DEV"
@@ -17,7 +17,7 @@
     >
       <v-svg-arrow-right />
     </v-button>
-  </v-layout-auth>
+  </div>
 </template>
 
 <script lang="ts">
@@ -38,14 +38,16 @@ export default Vue.extend({
 </script>
 
 <style lang="scss" scoped>
-.box-half-rounded {
-  margin: 24px;
-  padding: 32px 24px 0 24px;
-  background-color: white;
-  .form-title {
-    text-align: center;
-    font-size: 20px;
-    padding-bottom: 18px;
+#home {
+  .box-half-rounded {
+    margin: 24px;
+    padding: 32px 24px 0 24px;
+    background-color: white;
+    .form-title {
+      text-align: center;
+      font-size: 20px;
+      padding-bottom: 18px;
+    }
   }
 }
 .button-login {

@@ -37,7 +37,7 @@ export default Vue.extend({
     left: 0;
     justify-items: center;
     .alert {
-      transition: 0.6s;
+      transition: 0.4s;
     }
   }
 }

@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <router-view />
+    <v-layout-auth>
+      <transition name="fade" mode="out-in">
+        <router-view />
+      </transition>
+    </v-layout-auth>
+    
     <v-alerts />
   </div>
 </template>
@@ -32,5 +37,13 @@ svg {
   width: 24px;
   height: 24px;
   fill: black;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .32s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
