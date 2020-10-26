@@ -7,9 +7,7 @@
       slot="container"
       to="/"
     >
-      <strong class="domain">
-        todo<span class="tlc">.legal</span>
-      </strong>
+      <v-svg-todo-legal />
     </router-link>
   </v-box-center-container>
 </template>
@@ -23,17 +21,10 @@ export default Vue.extend({
 
 <style lang="scss">
 #layout-auth-header {
-  .domain, .tlc {
-    font-size: 30px;
-    font-weight: 500;
-  }
-  .domain {
-    .tlc {
-      color: rgb(100, 200, 200);
-      background-color: black;
-      border-radius: 0 0 0 4px;
-      padding: 0 2px 8px 0;
-    }
+  padding-top: 4px;
+  svg {
+    width: auto;
+    height: 46px;
   }
 }
 </style>
