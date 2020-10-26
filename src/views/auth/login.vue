@@ -18,7 +18,11 @@
 
       <v-input label="Contraseña" type="password" v-model="form.password" />
 
-      <router-link class="create-account-link" :to="{ name: 'auth-register' }">
+      <router-link
+        class="create-account-link"
+        :to="{ name: 'auth-register' }"
+        @click.native="toCreateAccount()"
+      >
         No tengo cuenta, crear cuenta GRATIS
       </router-link>
 
@@ -68,6 +72,16 @@ export default Vue.extend({
         .finally(() => {
           this.loader = false
         })
+    },
+    toCreateAccount() {
+      if (!this.$auth.getters.loggedIn) {
+        this.$store.state.alerts.push({
+          id: Math.floor((Math.random() * 999999999999) + 1),
+          type: 'info',
+          title: 'No Authorizado',
+          description: 'Según el ejercicio: Se necesita el token de login para crear nuevos usuarios'
+        })
+      }
     }
   }
 })

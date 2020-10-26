@@ -1,18 +1,13 @@
 <template>
-  <div
-    :class="{
-      alert: true,
-      warm: alert.type == 'warm',
-      ok: alert.type == 'ok'
-    }"
-  >
+  <div :class="`alert ${alert.type}`">
     <v-button-close
       @click.native="$emit('on-closed')"
     />
 
     <div class="svg-type-container">
-      <v-svg-error-outline    v-if="alert.type == 'warm'" />
-      <v-svg-checkmark-circle v-else-if="alert.type == 'ok'" />
+      <v-svg-error-outline    v-if="alert.type      == 'warm'" />
+      <v-svg-checkmark-circle v-else-if="alert.type == 'ok'"   />
+      <v-svg-text-sms         v-else-if="alert.type == 'info'" />
     </div>
 
     <strong class="title">{{ alert.title }}</strong>
@@ -60,7 +55,7 @@ export default Vue.extend({
     font-size: 14px;
   }
   .description {
-    font-size: 13px;
+    font-size: 12px;
     color: rgb(150, 150, 150);
   }
   .button-close {
@@ -99,6 +94,21 @@ export default Vue.extend({
     .button-close {
       svg {
         fill: map-get($map: $color, $key: alert-ok);
+      }
+    }
+  }
+  &.info {
+    .title {
+      color: map-get($map: $color, $key: alert-info);
+    }
+    .svg-type-container {
+      svg {
+        fill: map-get($map: $color, $key: alert-info);
+      }
+    }
+    .button-close {
+      svg {
+        fill: map-get($map: $color, $key: alert-info);
       }
     }
   }
