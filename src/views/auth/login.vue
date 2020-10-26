@@ -52,36 +52,41 @@ export default Vue.extend({
     }
   },
   methods: {
+    validator() : boolean {
+      return this.form.username != '' && this.form.password != ''
+    },
     onSubmit() {
-      this.loader = true
+      if (this.validator()) {
+        this.loader = true
 
-      this.$auth
-        .dispatch(AuthActionTypes.LOGIN, this.form)
-        .then(response => {
-          this.$auth.commit(AuthMutationTypes.SET_USER, response.data)
+        this.$auth
+          .dispatch(AuthActionTypes.LOGIN, this.form)
+          .then(response => {
+            this.$auth.commit(AuthMutationTypes.SET_USER, response.data)
 
-          this.$store.state.alerts.push({
-            id: Math.floor((Math.random() * 999999999999) + 1),
-            type: 'welcome',
-            title: `Hola ${this.$auth.getters.userName}`,
-            description: 'Nos alegra mucha tenerte de vuelta en todo.legal'
+            this.$store.state.alerts.push({
+              id: Math.floor((Math.random() * 999999999999) + 1),
+              type: 'welcome',
+              title: `Hola ${this.$auth.getters.userName}`,
+              description: 'Nos alegra mucha tenerte de vuelta en todo.legal'
+            })
+
+            this.loggedIn = true
           })
+          .catch(error => {
+            const data = error.response.data
 
-          this.loggedIn = true
-        })
-        .catch(error => {
-          const data = error.response.data
-
-          this.$store.state.alerts.push({
-            id: Math.floor((Math.random() * 999999999999) + 1),
-            type: 'warm',
-            title: data.status,
-            description: data.msg
+            this.$store.state.alerts.push({
+              id: Math.floor((Math.random() * 999999999999) + 1),
+              type: 'warm',
+              title: data.status,
+              description: data.msg
+            })
           })
-        })
-        .finally(() => {
-          this.loader = false
-        })
+          .finally(() => {
+            this.loader = false
+          })
+      }
     },
     toCreateAccount() {
       if (!this.$auth.getters.loggedIn) {

@@ -45,32 +45,52 @@ export default Vue.extend({
     }
   },
   methods: {
+    validator() : boolean {
+      const passwordConfirmation = this.form.password == this.form.password_confirmation
+
+      if (!passwordConfirmation) {
+        this.$store.state.alerts.push({
+          id: Math.floor((Math.random() * 999999999999) + 1),
+          type: 'warm',
+          title: 'Contraseña Invalida',
+          description: 'La contraseñas no coinciden, verifica y vuelve a intentarlo'
+        })
+      }
+
+      return (
+        this.form.username != '' &&
+        this.form.password != '' &&
+        passwordConfirmation
+      )
+    },
     onSubmit() {
-      this.loader = true
+      if (this.validator()) {
+        this.loader = true
 
-      this.$auth
-        .dispatch(AuthActionTypes.REGISTER, this.form)
-        .then(response => {
-          this.$store.state.alerts.push({
-            id: Math.floor((Math.random() * 999999999999) + 1),
-            type: 'ok',
-            title: '¡Registro Exitoso!',
-            description: 'Tu registro se ha realizado con éxito'
+        this.$auth
+          .dispatch(AuthActionTypes.REGISTER, this.form)
+          .then(response => {
+            this.$store.state.alerts.push({
+              id: Math.floor((Math.random() * 999999999999) + 1),
+              type: 'ok',
+              title: '¡Registro Exitoso!',
+              description: 'Tu registro se ha realizado con éxito'
+            })
           })
-        })
-        .catch(error => {
-          const data = error.response.data
+          .catch(error => {
+            const data = error.response.data
 
-          this.$store.state.alerts.push({
-            id: Math.floor((Math.random() * 999999999999) + 1),
-            type: 'warm',
-            title: data.status,
-            description: data.msg
+            this.$store.state.alerts.push({
+              id: Math.floor((Math.random() * 999999999999) + 1),
+              type: 'warm',
+              title: data.status,
+              description: data.msg
+            })
           })
-        })
-        .finally(() => {
-          this.loader = false
-        })
+          .finally(() => {
+            this.loader = false
+          })
+      }
     }
   }
 })
