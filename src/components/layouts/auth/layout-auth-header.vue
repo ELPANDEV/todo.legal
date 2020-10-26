@@ -5,7 +5,7 @@
   >
     <router-link
       slot="container"
-      to="/"
+      :to="{ name: 'home' }"
     >
       <v-svg-todo-legal />
     </router-link>

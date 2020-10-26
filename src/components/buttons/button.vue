@@ -1,5 +1,7 @@
 <template>
-  <button>
+  <button
+    :class="{ anim }"
+  >
     <slot />
   </button>
 </template>
@@ -7,7 +9,13 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  
+  props: {
+    anim: {
+      type: Boolean,
+      required: false,
+      default: true
+    }
+  }
 })
 </script>
 
@@ -19,5 +27,11 @@ button {
   cursor: pointer;
   display: grid;
   place-items: center;
+  transition: .1s;
+  &.anim {
+    &:active {
+      transform: scale(1.1);
+    }
+  }
 }
 </style>

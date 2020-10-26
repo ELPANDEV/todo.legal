@@ -1,5 +1,8 @@
 <template>
-  <v-button class="button-submit">
+  <v-button
+    :anim="false"
+    class="button-submit"
+  >
     {{ name }}
     <slot name="svg" />
   </v-button>

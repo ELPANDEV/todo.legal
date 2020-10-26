@@ -1,6 +1,6 @@
 <template>
   <main class="auth-login">
-    <v-pseudo-screen-logged v-if="$auth.getters.loggedIn" />
+    <v-pseudo-screen-logged v-if="loggedIn" />
 
     <v-form-auth
       v-else
@@ -41,7 +41,8 @@ export default Vue.extend({
       username: '1758700024-2',
       password: 'T3sterR0o*'
     },
-    loader: false
+    loader: false,
+    loggedIn: false
   }),
   computed: {
     submitActive: {
@@ -58,6 +59,15 @@ export default Vue.extend({
         .dispatch(AuthActionTypes.LOGIN, this.form)
         .then(response => {
           this.$auth.commit(AuthMutationTypes.SET_USER, response.data)
+
+          this.$store.state.alerts.push({
+            id: Math.floor((Math.random() * 999999999999) + 1),
+            type: 'welcome',
+            title: `Hola ${this.$auth.getters.userName}`,
+            description: 'Nos alegra mucha tenerte de vuelta en todo.legal'
+          })
+
+          this.loggedIn = true
         })
         .catch(error => {
           const data = error.response.data
@@ -82,6 +92,16 @@ export default Vue.extend({
           description: 'Según el ejercicio: Se necesita el token de login para crear nuevos usuarios'
         })
       }
+    }
+  },
+  mounted() {
+    if (this.$auth.getters.loggedIn) {
+      this.$store.state.alerts.push({
+        id: Math.floor((Math.random() * 999999999999) + 1),
+        type: 'info',
+        title: 'Ya has iniciado sesión',
+        description: 'Tu cuenta ya ha sido verificada, ahora puedes hacer uso de todas nuestras herramientas'
+      })
     }
   }
 })

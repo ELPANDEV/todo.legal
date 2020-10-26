@@ -17,7 +17,11 @@
 import Vue from 'vue'
 export default Vue.extend({
   props: {
-    tag: String,
+    tag: {
+      type: String,
+      required: false,
+      default: 'div'
+    },
     center: {
       type: Boolean,
       required: false,

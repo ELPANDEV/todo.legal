@@ -15,25 +15,19 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'home',
     component: Home,
-    meta: {
-      middleware: [auth]
-    }
   },
   {
     path: '/auth',
     name: 'auth',
     component: () => import('../views/auth/auth.vue'),
     meta: {
-      middleware: [auth]
+      middleware: [guess]
     },
     children: [
       {
         path: 'login',
         name: 'auth-login',
         component: () => import('../views/auth/login.vue'),
-        meta: {
-          middleware: [guess]
-        }
       },
       {
         path: 'register',

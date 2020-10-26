@@ -8,6 +8,7 @@
       <v-svg-error-outline    v-if="alert.type      == 'warm'" />
       <v-svg-checkmark-circle v-else-if="alert.type == 'ok'"   />
       <v-svg-text-sms         v-else-if="alert.type == 'info'" />
+      <v-svg-tag-faces        v-else-if="alert.type == 'welcome'" />
     </div>
 
     <strong class="title">{{ alert.title }}</strong>
@@ -82,7 +83,7 @@ export default Vue.extend({
       }
     }
   }
-  &.ok {
+  &.ok, &.welcome {
     .title {
       color: map-get($map: $color, $key: alert-ok);
     }
