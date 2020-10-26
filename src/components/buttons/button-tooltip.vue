@@ -37,6 +37,7 @@ export default Vue.extend({
 <style lang="scss" scoped>
 button {
   position: relative;
+  z-index: 1;
   .box-center-container {
     position: absolute;
     background-color: white;
